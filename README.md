@@ -1,4 +1,4 @@
-.Eslint Configuration Editor
+Eslint Configuration Editor
 =============================
 
 Overview
