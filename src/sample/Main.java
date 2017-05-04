@@ -31,7 +31,7 @@ public class Main extends Application {
         ((Controller)loader.getController()).setPrimary_stage(primaryStage);
         Scene scene=new Scene(root, 1038, 564);
 
-        scene.getStylesheets().add(Main.class.getResource("jfoenix-main.css").toExternalForm());
+        scene.getStylesheets().add(Main.class.getResource("javafxcss/jfoenix-main.css").toExternalForm());
         primaryStage.setScene(scene);
         primaryStage.show();
 
