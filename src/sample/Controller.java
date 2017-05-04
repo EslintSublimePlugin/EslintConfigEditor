@@ -622,6 +622,9 @@ public class Controller implements Initializable {
         //Set extension filter
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("JSON files (*.json)", "*.json");
         fileChooser.setTitle("Save Rule File");
+        if (Main.filename!=null){
+            fileChooser.setInitialFileName(Main.filename);
+        }
         fileChooser.getExtensionFilters().add(extFilter);
         File file = fileChooser.showSaveDialog(primary_stage);
         if (file!=null){
