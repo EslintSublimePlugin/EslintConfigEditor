@@ -20,16 +20,17 @@ Apache License, Version 2.0
 
 Dependencies
 -------
-Java : version >= 1.8.x
+Java : version >= 1.8.x <br />
 Note : Make sure java is available in the path
+
 
 Usage
 ------
 Clone the repo. and download jar file from here : [EslintEditor.jar](https://github.com/EslintSublimePlugin/EslintConfigEditor/blob/master/out/artifacts/EslintEditor_jar/EslintEditor.jar?raw=true)
 
-Copy folder named JSON from cloned repo. and place it in the same direcory as jar file.
-Open the terminal, navigate to jar directory
-Execute the jar file and give eslint configuration file path as an argument
+Copy folder named JSON from cloned repo. and place it in the same direcory as jar file.<br />
+Open the terminal, navigate to jar directory<br />
+Execute the jar file and give eslint configuration file path as an argument<br />
 
 ```Java
     Java -jar EslintEditor.jar PATH_TO_ESLINTRC.JSON
