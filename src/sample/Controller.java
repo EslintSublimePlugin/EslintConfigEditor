@@ -672,109 +672,109 @@ public class Controller implements Initializable {
         AnchorPane pane=new AnchorPane(error,warning,off);
 
         CheckBoxesCell(int i){
-            if (i==-1){
-                i=0;
-            }
-            String name=lists.get(pageNumber).get(i).getName();
+            if (lists.get(pageNumber).size()>0) {
+                if (i == -1) {
+                    i = 0;
+                }
+                String name = lists.get(pageNumber).get(i).getName();
 
-            if (Controller.this.error.isSelected()) {
-                error.setSelected(true);
-            }else {
-                error.setSelected(false);
-            }
-            if (Controller.this.warning.isSelected()){
-                warning.setSelected(true);
-            }else {
-                warning.setSelected(false);
-            }
-
-            if (Controller.this.off.isSelected()){
-                off.setSelected(true);
-            }else{
-                off.setSelected(false);
-            }
-
-            if (!(Controller.this.error.isSelected() || Controller.this.warning.isSelected() || Controller.this.off.isSelected())) {
-                if (recordedData.optString(name).equals("error")) {
-//                    System.out.println("error got called");
+                if (Controller.this.error.isSelected()) {
                     error.setSelected(true);
-                    warning.setSelected(false);
-                    off.setSelected(false);
+                } else {
+                    error.setSelected(false);
                 }
-                else if (recordedData.optString(name).equals("warn")) {
-//                    System.out.println("warn got called");
+                if (Controller.this.warning.isSelected()) {
                     warning.setSelected(true);
-                    error.setSelected(false);
-                    off.setSelected(false);
+                } else {
+                    warning.setSelected(false);
                 }
-                else if (recordedData.optString(name).equals("off")) {
-//                    System.out.println("off got called");
+
+                if (Controller.this.off.isSelected()) {
                     off.setSelected(true);
-                    error.setSelected(false);
-                    warning.setSelected(false);
-                }
-            }
-
-            error.setLayoutX(14);
-
-            error.setStyle("-fx-alignment: center ;");
-            error.setUnCheckedColor(Paint.valueOf("#cf2d2d"));
-            error.setCheckedColor(Paint.valueOf("#cf2d2d"));
-            warning.setLayoutX(63);
-
-            warning.setStyle("-fx-alignment: center ;");
-            warning.setUnCheckedColor(Paint.valueOf("#bdd015"));
-            warning.setCheckedColor(Paint.valueOf("#bdd015"));
-            off.setLayoutX(109);
-
-            off.setStyle("-fx-alignment: center ;");
-            off.setCheckedColor(Color.BLACK);
-
-            pane.setStyle("-fx-alignment: top-center;");
-
-            error.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    warning.setSelected(false);
+                } else {
                     off.setSelected(false);
-                    if (error.isSelected()){
+                }
+
+                if (!(Controller.this.error.isSelected() || Controller.this.warning.isSelected() || Controller.this.off.isSelected())) {
+                    if (recordedData.optString(name).equals("error")) {
+//                    System.out.println("error got called");
+                        error.setSelected(true);
+                        warning.setSelected(false);
+                        off.setSelected(false);
+                    } else if (recordedData.optString(name).equals("warn")) {
+//                    System.out.println("warn got called");
+                        warning.setSelected(true);
+                        error.setSelected(false);
+                        off.setSelected(false);
+                    } else if (recordedData.optString(name).equals("off")) {
+//                    System.out.println("off got called");
+                        off.setSelected(true);
+                        error.setSelected(false);
+                        warning.setSelected(false);
+                    }
+                }
+
+                error.setLayoutX(14);
+
+                error.setStyle("-fx-alignment: center ;");
+                error.setUnCheckedColor(Paint.valueOf("#cf2d2d"));
+                error.setCheckedColor(Paint.valueOf("#cf2d2d"));
+                warning.setLayoutX(63);
+
+                warning.setStyle("-fx-alignment: center ;");
+                warning.setUnCheckedColor(Paint.valueOf("#bdd015"));
+                warning.setCheckedColor(Paint.valueOf("#bdd015"));
+                off.setLayoutX(109);
+
+                off.setStyle("-fx-alignment: center ;");
+                off.setCheckedColor(Color.BLACK);
+
+                pane.setStyle("-fx-alignment: top-center;");
+
+                error.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        warning.setSelected(false);
+                        off.setSelected(false);
+                        if (error.isSelected()) {
 //                        System.out.println("Error is selected");
-                        recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(),"error");
-                    }else{
+                            recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "error");
+                        } else {
 //                        System.out.println("Error is unselected");
-                        recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(),"None");
+                            recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "None");
+                        }
+                        setAllParentCheckBoxFalse();
                     }
-                    setAllParentCheckBoxFalse();
-                }
-            });
+                });
 
-            warning.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    error.setSelected(false);
-                    off.setSelected(false);
-                    if (warning.isSelected()) {
-                        recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "warn");
-                    }else{
-                        recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "None");
+                warning.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        error.setSelected(false);
+                        off.setSelected(false);
+                        if (warning.isSelected()) {
+                            recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "warn");
+                        } else {
+                            recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "None");
+                        }
+                        setAllParentCheckBoxFalse();
                     }
-                    setAllParentCheckBoxFalse();
-                }
-            });
+                });
 
-            off.setOnMouseClicked(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
-                    error.setSelected(false);
-                    warning.setSelected(false);
-                    if (off.isSelected()) {
-                        recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "off");
-                    }else{
-                        recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "None");
+                off.setOnMouseClicked(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
+                        error.setSelected(false);
+                        warning.setSelected(false);
+                        if (off.isSelected()) {
+                            recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "off");
+                        } else {
+                            recordedData.put(((RuleModel) ((TreeTableRow) getParent()).getItem()).getName(), "None");
+                        }
+                        setAllParentCheckBoxFalse();
                     }
-                    setAllParentCheckBoxFalse();
-                }
-            });
+                });
+            }
         }
 
 
@@ -822,20 +822,22 @@ public class Controller implements Initializable {
         JFXTextField field=new JFXTextField();
 
         TextFieldCell(int i){
-            RuleModel model=lists.get(pageNumber).get(i);
+            if (lists.get(pageNumber).size()>0) {
+                RuleModel model = lists.get(pageNumber).get(i);
 //            System.out.println("value is "+value);
-            field.textProperty().addListener(new ChangeListener<String>() {
-                @Override
-                public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
-                    if (getParent()!=null) {
-                        String name = ((RuleModel) ((TreeTableRow) getParent()).getItem()).getName();
-                        recordedData.put(name, newValue);
+                field.textProperty().addListener(new ChangeListener<String>() {
+                    @Override
+                    public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                        if (getParent() != null) {
+                            String name = ((RuleModel) ((TreeTableRow) getParent()).getItem()).getName();
+                            recordedData.put(name, newValue);
+                        }
                     }
-                }
-            });
-            field.setText(recordedData.getString(model.getName()));
-            field.setFocusColor(Color.SLATEGREY);
-            field.setStyle("-fx-font-size: 12;-fx-font-family: Droid Sans;-fx-alignment: center;-fx-text-alignment: center;");
+                });
+                field.setText(recordedData.getString(model.getName()));
+                field.setFocusColor(Color.SLATEGREY);
+                field.setStyle("-fx-font-size: 12;-fx-font-family: Droid Sans;-fx-alignment: center;-fx-text-alignment: center;");
+            }
         }
 
         @Override
