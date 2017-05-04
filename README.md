@@ -10,7 +10,7 @@ This tool provides following functionality.
 - Search particular rule by it's name
 - Documentation on double click 
 - Generate project level configuration file
-- Import existing rule file and create another eslint configuration file on top of existing file
+- Import existing conf. file and create another eslint configuration file on top of existing file
 
 
 License
@@ -32,7 +32,7 @@ Usage
 - Execute the jar file and give eslint configuration file path as an argument<br />
 
 ```Java
-    Java -jar EslintEditor.jar PATH_TO_ESLINTRC.JSON
+    java -jar EslintEditor.jar PATH_TO_ESLINTRC.JSON
 
 ```
 
