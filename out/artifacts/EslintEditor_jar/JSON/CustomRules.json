@@ -1,0 +1,9 @@
+[
+    {
+        "Desc": "Simple BMC prefix rule",
+        "Recommended": true,
+        "Fixable": false,
+        "Link": "http://eslint.org/docs/rules/accessor-pairs",
+        "Name": "BMC_prefix"
+    }
+]
